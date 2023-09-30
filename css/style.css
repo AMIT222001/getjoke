@@ -66,6 +66,7 @@ body {
 #joke
 {
   overflow:auto;
+  width:100%;
 }
 
 #click
