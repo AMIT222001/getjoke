@@ -33,8 +33,8 @@ color: black;
     align-items: center;
     
     
-    height: 400vh;
-    width: 600vh;
+    height: 400px;
+    width: 600px;
     background-image: linear-gradient(to right,black,darkgrey,black);
     border-radius: 30px;
     margin-top:15vh;
@@ -43,7 +43,12 @@ color: black;
  
    
 }
-
+@media only screen and (max-width: 600px) {
+  . container {
+    height:200px;
+      width:300px;
+  }
+}
 #joke
 {
   display: flex;
