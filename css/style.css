@@ -58,6 +58,11 @@ body {
     background-position: 0 0;
   }
 }
+#joke
+{
+  overflow:auto;
+}
+
 #click
 {
   color: beige;
