@@ -9,10 +9,10 @@
 </head>
 <body>
    
-    <main class="container">
+    <main id="box">
         
-        <h2 >Category of Joke:
-            <span id="category"></span>
+        <h2 id="category" >
+            
         </h2>
         <div id="joke"   >
            <p id="setup"></p>
@@ -62,10 +62,10 @@ $(document).ready(function()
     {
        
         let color=["#7823DC","#C33CAD","#C33C4F","#51A0AE","#0CF3A4","#C67739"]
-        let backgroun=["#934FE3","#CF63BD","#CF6372","#74B3BE","#3DF5B6","#D19261"]
+      
         
          index=index%6;
-         index1=index1%6;
+       
        
         $.ajax({
         url:"https://v2.jokeapi.dev/joke/Any",
@@ -104,8 +104,9 @@ $(document).ready(function()
 
 
 
-    $("#category").css("color",color[index++]);
-    $("body").css("background-color",backgroun[index1++]);
+    $("#category").css("color",color[index]);
+    $("#click").css("background-color",color[index]);
+    index++;
     })
 })
 
