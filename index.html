@@ -1,114 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-   
-    <main id="box">
-        
-        <h2 id="category" >
-            
-        </h2>
-        <div id="joke"   >
-           <p id="setup"></p>
-          
-           <p id="delivery"></p>
-        </div>
-        <button id="click"> New Joke</button>
-      </main>
-</body>
-
-<script>
-  
-$(document).ready(function()
-{
-    let index=0;
-    let index1=0;
-    $.ajax({
-        url:"https://v2.jokeapi.dev/joke/Any",
-        type:'GET',
-        success:function(data)
-        {
-            console.log(data);
-            const jokeCategory=data.category;
-            
-            const jokeSetup=data.setup;
-            const jokeDelivery=data.delivery;
-            const joke=data.joke;
-            $("#category").html(jokeCategory);
-            if(jokeSetup&&jokeDelivery)
-            {
-                $("#setup").html(jokeSetup);
-            $("#delivery").html(jokeDelivery);
-          
-            }
-            if(joke)
-            {
-                $("#setup").html(joke);
-                
-            }
-            
-
-
-        }
-
-    });
-    $("#click").on("click",function()
-    {
-       
-        let color=["#7823DC","#C33CAD","#C33C4F","#51A0AE","#0CF3A4","#C67739"]
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    
+        <main id="box">
+            <h2 id="category"></h2>
+            <div id="joke">
+              <p id="setup"></p>
       
-        
-         index=index%6;
-       
-       
-        $.ajax({
-        url:"https://v2.jokeapi.dev/joke/Any",
-        type:'GET',
-        success:function(data)
-        {
-            console.log(data);
-            const jokeCategory=data.category;
-            
-            const jokeSetup=data.setup;
-            const jokeDelivery=data.delivery;
-            const joke=data.joke;
-            $("#category").html(jokeCategory);
-            if(jokeSetup&&jokeDelivery)
-            {
-                $("#setup").html(jokeSetup);
+              <p id="delivery"></p>
+            </div>
+            <button id="click">New Joke</button>
+          </main>
+  
+    
+  </body>
+
+  <script>
+    $(document).ready(function () {
+      let index = 0;
+      let index1 = 0;
+      $.ajax({
+        url: "https://v2.jokeapi.dev/joke/Any",
+        type: "GET",
+        success: function (data) {
+          console.log(data);
+          const jokeCategory = data.category;
+
+          const jokeSetup = data.setup;
+          const jokeDelivery = data.delivery;
+          const joke = data.joke;
+          $("#category").html(jokeCategory);
+          if (jokeSetup && jokeDelivery) {
+            $("#setup").html(jokeSetup);
             $("#delivery").html(jokeDelivery);
-          
+          }
+          if (joke) {
+            $("#setup").html(joke);
+          }
+        },
+      });
+      $("#click").on("click", function () {
+        let color = [
+          "#7823DC",
+          "#C33CAD",
+          "#C33C4F",
+          "#51A0AE",
+          "#0CF3A4",
+          "#C67739",
+        ];
+
+        index = index % 6;
+
+        $.ajax({
+          url: "https://v2.jokeapi.dev/joke/Any",
+          type: "GET",
+          success: function (data) {
+            console.log(data);
+            const jokeCategory = data.category;
+
+            const jokeSetup = data.setup;
+            const jokeDelivery = data.delivery;
+            const joke = data.joke;
+            $("#category").html(jokeCategory);
+            if (jokeSetup && jokeDelivery) {
+              $("#setup").html(jokeSetup);
+              $("#delivery").html(jokeDelivery);
             }
-            if(joke)
-            {
-                $("#setup").html(joke);
-                $("#delivery").html("");
-                
-
-                
+            if (joke) {
+              $("#setup").html(joke);
+              $("#delivery").html("");
             }
-            
+          },
+        });
 
-
-        }
-
+        $("#category").css("color", color[index]);
+        $("#click").css("background-color", color[index]);
+        index++;
+      });
     });
-
-
-
-
-
-    $("#category").css("color",color[index]);
-    $("#click").css("background-color",color[index]);
-    index++;
-    })
-})
-
-</script>
+  </script>
 </html>
